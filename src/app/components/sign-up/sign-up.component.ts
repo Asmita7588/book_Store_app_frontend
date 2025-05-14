@@ -15,6 +15,7 @@ export class SignUpComponent implements OnInit {
   submitted = false;
   isLogin = true;
   isSignUp = true;
+  isLoading = false;
 
   hide = signal(true);
   clickEvent(event: MouseEvent) {
@@ -48,6 +49,7 @@ export class SignUpComponent implements OnInit {
 
   // Login Method
   onlogin(): void {
+     this.isLoading = true;
     this.submitted = true;
 
     if (this.login.invalid) return;
@@ -56,14 +58,17 @@ export class SignUpComponent implements OnInit {
 
     this.userService.login(loginData).subscribe(
       (response: any) => {
+        this.isLoading = false;
         console.log('Login successful', response);
-        localStorage.setItem('token', response.result.accessToken);
-        this.snackbar.open('Login successful!', '', { duration: 3000 });
-        this.router.navigateByUrl('/home');
+        localStorage.setItem('accessToken', response.data.accessToken);
+        localStorage.setItem('refreshToken', response.data.refreshToken);
+        this.snackbar.open('Login successful!', 'close', { duration: 3000, panelClass: ['snackbar-success'] });
+         this.router.navigateByUrl('/dashboard');
       },
       (error) => {
+       this.isLoading = false;
         console.log('Login error:', error);
-        this.snackbar.open('Login failed. Please try again.', '', { duration: 3000 });
+        this.snackbar.open('Login failed. Please try again.', 'close', { duration: 3000,panelClass: ['snackbar-error'] });
       }
     );
   }
@@ -79,12 +84,12 @@ export class SignUpComponent implements OnInit {
     this.userService.signUp(signupData).subscribe(
       (response: any) => {
         console.log('Signup successful', response);
-        this.snackbar.open('Signup successful!', '', { duration: 3000 });
+        this.snackbar.open('Signup successful!', '', { duration: 3000, panelClass: ['snackbar-success'] });
         this.signup.reset(); 
       },
       (error) => {
         console.log('Signup error:', error);
-        this.snackbar.open('Signup failed. Please try again.', '', { duration: 3000 });
+        this.snackbar.open('Signup failed. Please try again.', '', { duration: 3000, panelClass: ['snackbar-error'] });
       }
     );
   }

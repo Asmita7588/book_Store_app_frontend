@@ -12,7 +12,10 @@ export class UserService {
     return this.http.postApi('/api/user', payload);
   }
 
+  // login(payload: any) {
+  //   return this.http.postApi('/api/user/login', payload)
+  // }
   login(payload: any) {
-    return this.http.postApi('/api/user/login', payload)
+    return this.http.postApi('/api/user/access-token-login', payload)
   }
 }

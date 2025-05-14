@@ -13,12 +13,14 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpComponent,
+    DashboardComponent,
    
   ],
   imports: [
