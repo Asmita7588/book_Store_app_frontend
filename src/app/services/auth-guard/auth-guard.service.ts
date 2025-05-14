@@ -8,8 +8,8 @@ export class AuthGuardService {
 
   constructor(private router: Router) {}
   canActivate(): boolean {
-    if (localStorage.getItem('authToken')) {
-      console.log(localStorage.getItem('authToken'))
+    if (localStorage.getItem('accessToken')) {
+      console.log(localStorage.getItem('accessToken'))
       return true;
     } else {
       this.router.navigate(['']);
