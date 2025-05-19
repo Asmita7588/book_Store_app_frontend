@@ -63,7 +63,7 @@ export class SignUpComponent implements OnInit {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
         this.snackbar.open('Login successful!', 'close', { duration: 3000, panelClass: ['snackbar-success'] });
-         this.router.navigateByUrl('/dashboard');
+         this.router.navigateByUrl('/dashboard/books');
       },
       (error) => {
        this.isLoading = false;
