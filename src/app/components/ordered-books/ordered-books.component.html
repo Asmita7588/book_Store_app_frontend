@@ -1,0 +1,35 @@
+<div class="summary">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+  <h4 style="padding-top: 10px">dashboard/ My ordered</h4>
+  <div class="wishlist">
+    <h2 style="margin: 10px 0px 20px 20px">
+      My Orders({{ ordered.length }})
+    </h2>
+  </div>
+  <div *ngFor="let order of ordered" class="checkout">
+    <div style="display: flex; gap: 30px">
+      <div class="left">
+        <img [src]="order.bookImage" class="checkimage" />
+      </div>
+
+      <div class="right">
+        <h2>{{ order?.bookName }}</h2>
+        <p>{{ order?.author }}</p>
+        <h1>
+          Rs. {{ order?.discountPrice }}
+          <span id="price">Rs. {{ order?.price }}</span>
+        </h1>
+      </div>
+    </div>
+    <div class="removeBook">
+      <span>
+  <span style="height: 8px; width: 8px; background-color: green; border-radius: 50%; display: inline-block; margin-right: 6px;"></span>
+  Order placed on {{ order.orderDate | date: 'MMM d' }}
+</span>
+
+    </div>
+  </div>
+</div>
+
+
