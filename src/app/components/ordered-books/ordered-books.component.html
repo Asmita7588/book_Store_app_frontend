@@ -1,7 +1,9 @@
 <div class="summary">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-  <h4 style="padding-top: 10px">dashboard/ My ordered</h4>
+  <!-- <h4 style="padding-top: 10px">dashboard/ My ordered</h4> -->
+   <h2 style="padding-top: 10px"><span routerLink="/dashboard/books" style="color: gray;">dashboard</span>/My Order</h2>
+
   <div class="wishlist">
     <h2 style="margin: 10px 0px 20px 20px">
       My Orders({{ ordered.length }})
@@ -18,7 +20,7 @@
         <p>{{ order?.author }}</p>
         <h1>
           Rs. {{ order?.discountPrice }}
-          <span id="price">Rs. {{ order?.price }}</span>
+          <span >Rs. {{ order?.price }}</span>
         </h1>
       </div>
     </div>

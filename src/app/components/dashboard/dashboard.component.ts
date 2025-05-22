@@ -43,7 +43,7 @@ cartItemsCount :any
     }
      this.bookService.getAllBook();
     this.cartItemsCount = this.cartBook.length;
-    // this.getAllCartItems();
+     this.getAllCartItems();
 
 
     

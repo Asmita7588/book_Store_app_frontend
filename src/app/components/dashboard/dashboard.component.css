@@ -185,6 +185,37 @@ opacity: 1;
   font-size: 12px;
   color: #ffffff; 
 }
+.icon-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.badge-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+::ng-deep .mat-badge-content {
+  font-size: 10px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  width: 16px !important;             /* Force width to match height */
+  line-height: 16px !important;
+  padding: 0 !important;
+  border-radius: 50% !important;      /* Make it circular */
+  background-color: white !important;
+  color: #A03037 !important;
+  top: -9px !important;
+  right: -8px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 
 .dashboard-footer {

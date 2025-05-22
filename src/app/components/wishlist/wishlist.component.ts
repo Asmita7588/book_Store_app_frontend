@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { BookService } from 'src/app/services/books/book.service';
 import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 
 @Component({
@@ -9,8 +10,9 @@ import { WishlistService } from 'src/app/services/wishlist/wishlist.service';
 })
 export class WishlistComponent {
 
-  constructor(private wishService: WishlistService , private snackbar : MatSnackBar) {}
+  constructor(private wishService: WishlistService , private snackbar : MatSnackBar,private bookService :BookService) {}
   wishlist : any = [];
+  allBooks : any = [];
   Book:any;
   ngOnInit() {
     this.getWishlistBooks();
@@ -21,13 +23,16 @@ export class WishlistComponent {
       (this.wishlist = response.data)
       console.log('Get Wishlist Api is called', response);
       console.log(this.wishlist);
-      
     });
+     this.bookService.getAllBook().subscribe((books: any) => {
+    this.allBooks = books;
+      
+  });
   }
   deletewishListBooks(reqData:number){
     console.log(reqData);
     this.wishService.deleteWishListBook(reqData)?.subscribe((response:any)=>{
-       this.getWishlistBooks()
+      this.getWishlistBooks()
       console.log('delete Api is Called', response);
     })
     this.snackbar.open('WishList Book Removed' ,'',{

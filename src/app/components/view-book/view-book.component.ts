@@ -50,7 +50,6 @@ export class ViewBookComponent implements OnInit{
     this.dataservice.getbookdetails.subscribe((result: any) => {
       this.Book = result;
       console.log('data of book', this.Book);
-      this.getAllFeedback();
     });
   }
   addCarts() {
@@ -162,7 +161,7 @@ addWishlistBook() {
   }
 
   getAllFeedback() {
-    // this.cartService.getFeedback(this.Book._id).subscribe((response: any) => {
+    // this.cartService.getFeedback(this.Book.bookId).subscribe((response: any) => {
     //   console.log(response);
     //   (this.feedbacks = response.result),
     //     console.log('feedbacks', this.feedbacks);
@@ -172,7 +171,7 @@ addWishlistBook() {
     let data = {
       comment: this.comments,
       rating: '2',
-      bookid: this.Book._id,
+      bookid: this.Book.bookId,
     };
     // this.cartService.addFeedback(data).subscribe((response: any) => {
     //   console.log('feedBack Added', response);

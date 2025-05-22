@@ -11,7 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { GetAllBookComponent } from './components/get-all-book/get-all-book.component';
@@ -26,6 +26,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { OrderComponent } from './components/order/order.component';
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { OrderedBooksComponent } from './components/ordered-books/ordered-books.component';
+import { TokenInterceptor } from './interceptor/token.interceptor';
 
 
 
@@ -74,7 +75,13 @@ import { OrderedBooksComponent } from './components/ordered-books/ordered-books.
     
     
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

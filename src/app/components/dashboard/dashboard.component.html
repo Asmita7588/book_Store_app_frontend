@@ -69,11 +69,11 @@
       </div>
     </mat-menu>
 
-    <div class="icon-block">
-      <img src="/assets/images/cart.svg" class="icon" />
-      <a routerLink="/dashboard/cart" >
-      <span [matBadge]="cartItemsCount" matBadgeColor="warn" class="icon-label">Cart</span>
-      </a>
+    <div class="icon-block" style="margin-bottom: -3px;">
+      <div class="badge-wrapper" [matBadge]="cartItemsCount" matBadgeColor="warn" matBadgeOverlap="false">
+      <img src="/assets/images/cart.svg" class="icon" routerLink="/dashboard/cart"/>
+      </div>
+      <span class="icon-label" style="margin-top: -9px;">Cart</span>
     </div>
   </div>
 </header>
